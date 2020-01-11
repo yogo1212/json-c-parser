@@ -46,9 +46,8 @@ void json_parser_iterate(struct json_object *j, json_parser_func f)
 
 void json_parser_iterate_cb(struct json_object *j, json_parser_cb_t *cb)
 {
-	int len = json_object_array_length(j);
-	int i;
-	for (i = 0; i < len; i++) {
+	size_t len = json_object_array_length(j);
+	for (size_t i = 0; i < len; i++) {
 		cb->f(json_object_array_get_idx(j, i), cb->ctx);
 	}
 }
