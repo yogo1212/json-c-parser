@@ -1,6 +1,7 @@
 #ifndef JSON_C_PARSER_H
 #define JSON_C_PARSER_H
 
+#include <limits.h>
 #include <stdbool.h>
 
 #include <json-c/json.h>
@@ -23,6 +24,8 @@ typedef struct {
 	json_parser_t *parsers;
 	size_t cnt;
 } json_parser_table_t;
+
+#define json_type_any INT_MIN
 
 #define json_parser_table(h) json_parser_table_t h##_table = {\
   h, sizeof(h) / sizeof(h[0]),\

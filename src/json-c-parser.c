@@ -23,7 +23,7 @@ void json_parser_nest(struct json_object *j, json_parser_table_t *t)
 
   json_object_object_foreach(j, key, val) {
 		for (h = t->parsers; h < &(t->parsers[t->cnt]); h++) {
-		  if (!json_object_is_type(val, h->type))
+		  if (h->type != json_type_any && !json_object_is_type(val, h->type))
 		    continue;
 			if (strcmp(key, h->name) != 0)
 				continue;
