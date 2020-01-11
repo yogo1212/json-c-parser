@@ -40,6 +40,10 @@ void json_parser_extract_string(struct json_object *j, const char **s);
 void json_parser_extract_boolean(struct json_object *j, bool *b);
 #define json_extract_boolean(i) json_type_boolean, (json_parser_func) json_parser_extract_boolean, i
 
+void json_parser_exists(struct json_object *j, bool *b);
+#define json_exists_any(b) json_type_any, (json_parser_func) json_parser_exists, b
+#define json_exists(t, b) t, (json_parser_func) json_parser_exists, b
+
 void json_parser_extract_int64(struct json_object *j, int64_t *i);
 #define json_extract_int64(i) json_type_int, (json_parser_func) json_parser_extract_int64, i
 

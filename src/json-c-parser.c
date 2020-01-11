@@ -17,6 +17,11 @@ void json_parser_extract_int64(struct json_object *j, int64_t *i)
 	*i = json_object_get_int64(j);
 }
 
+void json_parser_exists(struct json_object *j, bool *b)
+{
+	*b = true;
+}
+
 void json_parser_nest(struct json_object *j, json_parser_table_t *t)
 {
 	json_parser_t *h;
