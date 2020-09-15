@@ -2,6 +2,16 @@
 
 #include <json-c-parser.h>
 
+void json_parser_extract_object(struct json_object *j, struct json_object **into)
+{
+	*into = j;
+}
+
+void json_parser_extract_array(struct json_object *j, struct array_list **into)
+{
+	*into = json_object_get_array(j);
+}
+
 void json_parser_extract_string(struct json_object *j, const char **s)
 {
 	*s = json_object_get_string(j);
