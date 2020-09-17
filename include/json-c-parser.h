@@ -38,7 +38,7 @@ void json_parser_extract_object(struct json_object *j, struct json_object **into
 #define json_extract_object(i) json_type_object, (json_parser_func) json_parser_extract_object, i
 
 void json_parser_extract_array(struct json_object *j, struct array_list **into);
-#define json_extract_array(i) json_type_array, (json_parser_func) json_parser_extract_object, i
+#define json_extract_array(i) json_type_array, (json_parser_func) json_parser_extract_array, i
 
 void json_parser_extract_string(struct json_object *j, const char **s);
 #define json_extract_string(i) json_type_string, (json_parser_func) json_parser_extract_string, i
