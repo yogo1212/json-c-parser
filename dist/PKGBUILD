@@ -1,0 +1,33 @@
+pkgname=libjson-c-parser-git
+pkgver=0.9
+pkgrel=1
+pkgdesc="parse json objects"
+arch=('x86_64' 'armv7h' 'aarch64')
+url="https://github.com/yogo1212/json-c-parser"
+provides=('libjson-c-parser')
+conflicts=('libjson-c-parser')
+license=('Unlicense')
+makedepends=('git' 'gcc' 'make')
+depends=('json-c')
+source=(git://github.com/yogo1212/json-c-parser.git)
+sha256sums=('SKIP')
+
+pkgver() {
+  cd json-c-parser
+
+	git describe --tags | tr - _
+}
+
+build() {
+  cd json-c-parser
+
+  make
+}
+
+package() {
+	cd json-c-parser
+
+	mkdir -p "$pkgdir/usr/"{include,lib}
+  cp bin/libjson-c-parser.a "$pkgdir/usr/lib/"
+  cp include/json-c-parser.h "$pkgdir/usr/include/"
+}
