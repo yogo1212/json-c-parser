@@ -29,10 +29,12 @@ void main(void)
 	struct json_object *j = json_tokener_parse(json_string);
 	printf("parsing this: %s\n", json_object_to_json_string(j));
 
-	int64_t id = 0; bool retry = false; const char *comment = NULL;
+	bool id_exists = false; int64_t id = 0;
+	bool retry = false; const char *comment = NULL;
 	json_parser_t public_parser[] = {
 		{ "commands", json_nest(&command_parser_table) },
 		{ "id",       json_extract_int64(&id) },
+		{ "id",       json_exists(json_type_int64, &id_exists) },
 		// the string will live as long as the json_object
 		{ "comment",  json_extract_string(&comment) },
 		// retry won't be parsed because it's not a boolean
@@ -42,7 +44,7 @@ void main(void)
 
 	json_parser_nest(j, &public_parser_table);
 
-	printf("id %ld retry %d comment >%s<\n", id, (int) retry, comment);
+	printf("id %s (%ld) retry %d comment >%s<\n", id_exists ? "present" : "not present", id, (int) retry, comment);
 	json_object_put(j);
 }
 ```
