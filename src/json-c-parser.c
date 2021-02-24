@@ -22,6 +22,11 @@ void json_parser_extract_boolean(struct json_object *j, bool *b)
 	*b = json_object_get_boolean(j);
 }
 
+void json_parser_extract_double(struct json_object *j, double *d)
+{
+	*d = json_object_get_double(j);
+}
+
 void json_parser_extract_int64(struct json_object *j, int64_t *i)
 {
 	*i = json_object_get_int64(j);
