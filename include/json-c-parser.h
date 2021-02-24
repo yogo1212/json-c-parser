@@ -47,7 +47,7 @@ void json_parser_extract_boolean(struct json_object *j, bool *b);
 #define json_extract_boolean(i) json_type_boolean, (json_parser_func) json_parser_extract_boolean, i
 
 void json_parser_extract_double(struct json_object *j, double *d);
-#define json_extract_double(i) json_type_double, (json_parser_func) json_parser_extract_double, d
+#define json_extract_double(d) json_type_double, (json_parser_func) json_parser_extract_double, d
 
 void json_parser_exists(struct json_object *j, bool *b);
 #define json_exists_any(b) json_type_any, (json_parser_func) json_parser_exists, b
