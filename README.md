@@ -39,6 +39,8 @@ void main(void)
 		{ "comment",  json_extract_string(&comment) },
 		// retry won't be parsed because it's not a boolean
 		{ "retry",    json_extract_boolean(&retry) },
+		// this, however, will try using json_object_get_boolean
+		{ "retry",    json_type_any, json_parser_extract_boolean, &retry },
 	};
 	json_parser_table(public_parser);
 
