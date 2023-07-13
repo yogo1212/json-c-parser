@@ -12,6 +12,11 @@ void json_parser_extract_array(struct json_object *j, struct array_list **into)
 	*into = json_object_get_array(j);
 }
 
+void json_parser_extract_array_len(struct json_object *j, size_t *l)
+{
+	*l = json_object_array_length(j);
+}
+
 void json_parser_extract_string(struct json_object *j, const char **s)
 {
 	*s = json_object_get_string(j);
