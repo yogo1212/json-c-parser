@@ -9,7 +9,7 @@ conflicts=('libjson-c-parser')
 license=('Unlicense')
 makedepends=('git' 'gcc' 'make')
 depends=('json-c')
-source=(git://github.com/yogo1212/json-c-parser.git)
+source=(git+https://github.com/yogo1212/json-c-parser.git)
 sha256sums=('SKIP')
 
 pkgver() {
