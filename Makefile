@@ -13,6 +13,8 @@ OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 BIN = $(OUTDIR)/lib$(NAME).a
 
 CFLAGS += -std=gnu11 -pedantic -Wall -I$(INCDIR)
+# leave adding -flto up to the build infrastructure
+CFLAGS += -ffat-lto-objects
 
 ifeq (1,$(DEBUG))
 CFLAGS += -g -Wextra
@@ -31,7 +33,7 @@ debug:
 	export DEBUG=1; "$(MAKE)"
 
 $(BIN): $(OBJECTS) | $(OUTDIR)
-	ar rcs $@ $^
+	$(AR) rcs $@ $^
 
 $(OBJECTS): $(OBJDIR)/%.o : $(SRCDIR)/%.c | $(OBJDIR)
 	$(CC) -c $< -o $@ $(CFLAGS)
