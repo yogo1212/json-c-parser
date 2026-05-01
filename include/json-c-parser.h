@@ -10,6 +10,7 @@
 #define json_c_parser_assert_type(v, T) _Generic((v), T: (v))
 #else
 #define json_c_parser_assert_type(v, T) \
+	__extension__ \
 	({ \
 		_Static_assert(__builtin_types_compatible_p(typeof(v), typeof(T)), #v " is not a " #T); \
 		v; \
