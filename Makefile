@@ -23,7 +23,7 @@ endif
 CFLAGS += -fPIC
 CFLAGS += $(DEFINES)
 
-.PHONY: clean default debug example
+.PHONY: clean default debug
 
 default: $(BIN)
 
@@ -41,9 +41,3 @@ $(DIRS):
 
 clean::
 	rm -rf $(DIRS)
-
-EXAMPLEBIN=bin/example
-example: $(EXAMPLEBIN)
-
-$(EXAMPLEBIN): $(BIN) | $(DIR)
-	gcc -o $@ $(CFLAGS) example.c bin/libjson-c-parser.a -ljson-c
