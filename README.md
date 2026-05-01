@@ -33,14 +33,14 @@ void main(void)
 	bool retry = false; const char *comment = NULL;
 	json_parser_t public_parser[] = {
 		{ "commands", json_nest(&command_parser_table) },
-		{ "id",       json_extract_int64(&id) },
+		{ "id",       json_extract_int(&id) },
 		{ "id",       json_exists(json_type_int64, &id_exists) },
 		// the string will live as long as the json_object
 		{ "comment",  json_extract_string(&comment) },
 		// retry won't be parsed because it's not a boolean
 		{ "retry",    json_extract_boolean(&retry) },
 		// this, however, will try using json_object_get_boolean
-		{ "retry",    json_type_any, json_parser_extract_boolean, &retry },
+		{ "retry",    json_type_any, (json_parser_func) json_parser_extract_boolean, &retry },
 	};
 	json_parser_table(public_parser);
 
