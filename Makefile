@@ -12,7 +12,7 @@ OBJECTS = $(patsubst $(SRCDIR)/%.c,$(OBJDIR)/%.o,$(SOURCES))
 
 BIN = $(OUTDIR)/lib$(NAME).a
 
-CFLAGS += -std=gnu99 -pedantic -Wall -I$(INCDIR)
+CFLAGS += -std=gnu11 -pedantic -Wall -I$(INCDIR)
 
 ifeq (1,$(DEBUG))
 CFLAGS += -g -Wextra
