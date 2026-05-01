@@ -59,6 +59,9 @@ void json_parser_exists(struct json_object *j, bool *b);
 void json_parser_extract_int64(struct json_object *j, int64_t *i);
 #define json_extract_int64(i) json_type_int, (json_parser_func) json_parser_extract_int64, i
 
+void json_parser_extract_uint64(struct json_object *j, uint64_t *u);
+#define json_extract_uint64(i) json_type_int, (json_parser_func) json_parser_extract_uint64, u
+
 void json_parser_iterate(struct json_object *j, json_parser_func f);
 #define json_iterate(f) json_type_array, (json_parser_func) json_parser_iterate, f
 void json_parser_iterate_cb(struct json_object *j, json_parser_cb_t *cb);
