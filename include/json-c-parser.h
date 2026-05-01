@@ -9,6 +9,7 @@
 #if __STDC_VERSION__ >= 201112L
 #define json_c_parser_assert_type(v, T) _Generic((v), T: (v))
 #else
+#include <assert.h>
 #define json_c_parser_assert_type(v, T) \
 	({ \
 		static_assert(__builtin_types_compatible_p(typeof(v), typeof(T)), #v " is not a " #T); \
